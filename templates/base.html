@@ -9,7 +9,8 @@
         content="ShopUS, bootstrap-5, bootstrap, sass, css, HTML Template, HTML,html, bootstrap template, free template, figma, web design, web development,front end, bootstrap datepicker, bootstrap timepicker, javascript, ecommerce template">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css" crossorigin="anonymous" />
 
     <link rel="icon" href="    {% static '/assets/images/homepage-one/icon.png' %}">
 
@@ -19,15 +20,15 @@
 
     <!--------------- swiper-css ---------------->
     
-    <link rel="stylesheet" href="{% static 'css/swiper10-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static '/css/swiper10-bundle.min.css' %}">
 
     <!--------------- bootstrap-css ---------------->
-    <link rel="stylesheet" href="{% static 'css/bootstrap-5.3.2.min.css' %}">
+    <link rel="stylesheet" href="{% static '/css/bootstrap-5.3.2.min.css' %}">
 
 
  
     <!---------------------- Range Slider ------------------->
-    <link rel="stylesheet" href="{% static 'css/nouislider.min.css' %}">
+    <link rel="stylesheet" href="{% static '/css/nouislider.min.css' %}">
     
 
     <!---------------------- Scroll ------------------->
@@ -35,12 +36,11 @@
 
     <!--------------- additional-css ---------------->
     
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
 
 
 
 </head>
-
 {% if messages %}
 {% for message in messages  %}
 <div id="myModal" class="modal fade " >
@@ -57,14 +57,10 @@
 	</div>
 </div> 
 <script>
-
     $(document).ready(function(){
       {% if messages %}
       {% for message in messages %}
-      $('#myModal').modal('show');
-      setTimeout( ()=>{
-        $('#myModal').modal('hide');
-      },2000);
+      $('#myModal{{ forloop.index }}').modal('show');
       {% endfor %}
       {% endif %}
     });

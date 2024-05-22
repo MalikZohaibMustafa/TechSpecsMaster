@@ -22,10 +22,10 @@
     <!--------------- header-section-end --------------->
  
     <!--------------- products-sidebar-section--------------->
-    <section class="product product-sidebar footer-padding">
+    <section class="product product-sidebar footer-padding " >
         <div class="container">
             <div class="row g-5">
-                <div class="col-lg-3">
+                <div class="col-lg-3  d-none d-lg-block ">
                     <div class="sidebar" data-aos="fade-right">
                         <div class="sidebar-section">
                             <div class="sidebar-wrapper sidebar-range">
@@ -252,7 +252,7 @@
                                 </div>
                             </div>
                             {% for product in products  %}
-                            <div class="col-lg-4 col-sm-6">
+                            <div class="col-6 col-lg-4 ">
                                 <div class="product-wrapper" data-aos="fade-up">
                                     <div class="product-img">
                                         <img src="{{product.image_url}}"
@@ -289,7 +289,7 @@
                                     <div class="product-info">
                                         
                                         <div class="product-description">
-                                            <a href="{% url 'product' product.id %}" class="product-details">{{product.name | title}}
+                                            <a href="{% url 'product' product.id %}" class=" product-details ">{{product.name | title}}
                                             </a>
                                             <div class="price">
                                                
@@ -336,6 +336,13 @@
     <script>
 
         $(document).ready(function() {
+            let mobileMenu = document.getElementById('mobileBrands');
+            let priceFilterMobile = document.getElementById('priceFilterMobile');
+            priceFilterMobile.classList.remove('d-none');
+            priceFilterMobile.classList.add('d-block');
+            console.log(mobileMenu)
+            mobileMenu.classList.remove('d-none');
+            mobileMenu.classList.add('d-block');
             let lowerSlider = document.getElementById('minPrice'),
                 upperSlider = document.getElementById('maxPrice'),
                 lowerInput = document.getElementById('one'),
@@ -371,11 +378,7 @@
             if (searchParams !== null) {
                 queryString += '&q=' + searchParams;
             }
-          
-                    let baseUrl = `{% url 'explore' 1 %}`;  // 'products:explore' is a placeholder, replace it with your actual view name and namespace if needed
-                    // Replace the page placeholder in the URL with the actual page number
-                    let newURL = baseUrl + '?' + queryString;
-
+                let newURL = `http://127.0.0.1:8000/products/{{currentUrl}}/1?${queryString}`;
                 window.location.href = newURL;
             };
         
@@ -401,6 +404,7 @@
         
         
     <script>
+
         const brands = document.getElementsByClassName('exploreBrands');
         const selectedBrands = [];
         const categoryLinks = document.getElementsByClassName('categoryLink');
@@ -447,9 +451,7 @@
             if (searchParams !== null) {
                 queryString += '&q=' + searchParams;
             }
-            let baseUrl = `{% url 'explore' 1 %}`; 
-                     const exploreUrl= baseUrl + '?' + queryString;
-
+            const exploreUrl = 'http://127.0.0.1:8000/products/'+'{{currentUrl}}/1' + '?' + queryString;
             window.location.href = exploreUrl;
         });
     
@@ -543,17 +545,13 @@
             
                     const button= document.createElement('button')
                     const a = document.createElement('a')
-                    const page = i
+                    const p = i
                     
-                    if (page<=0)
+                    if (p<=0)
                     {
                         continue
                     }
-                    let baseUrl = `{% url 'explore' 1 %}`;  // 'products:explore' is a placeholder, replace it with your actual view name and namespace if needed
-                    // Replace the page placeholder in the URL with the actual page number
-                    baseUrl = baseUrl.replace(/1$/, page);
-                    a.href = baseUrl + '?' + queryString;
-
+                    a.href = 'http://127.0.0.1:8000/products/'+'{{currentUrl}}/'+p + '?' + queryString 
                     button.classList.add('shop-btn')
                     button.classList.add('mx-2')
                     button.innerText = i
@@ -566,11 +564,7 @@
                 const a = document.createElement('a')
                 const p = currentPage
                 
-
-                let baseUrl = `{% url 'explore' 1 %}`;  // 'products:explore' is a placeholder, replace it with your actual view name and namespace if needed
-                    // Replace the page placeholder in the URL with the actual page number
-                    baseUrl = baseUrl.replace(/1$/, p);
-                    a.href = baseUrl + '?' + queryString;
+                a.href = 'http://127.0.0.1:8000/products/'+'{{currentUrl}}/'+p + '?' + queryString 
 
                 button.classList.add('shop-btn')
                 button.classList.add('mx-2')
@@ -591,12 +585,7 @@
                 {
                     continue
                 }
-
-                let baseUrl = `{% url 'explore' 1 %}`;  // 'products:explore' is a placeholder, replace it with your actual view name and namespace if needed
-                    // Replace the page placeholder in the URL with the actual page number
-                    baseUrl = baseUrl.replace(/1$/, p);
-                    a.href = baseUrl + '?' + queryString;
-
+                    a.href = 'http://127.0.0.1:8000/products/'+'{{currentUrl}}/'+p + '?' + queryString 
 
                 button.classList.add('shop-btn')
                 button.classList.add('mx-2')

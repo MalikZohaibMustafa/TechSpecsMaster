@@ -71,7 +71,7 @@
         <div class="container">
             <div class="style-section">
                 <div class="row gy-4 gx-5 gy-lg-0">
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 d-none d-lg-block  ">
                         <div class="product-wrapper wrapper-one" data-aos="fade-right">
                             <div class="wrapper-info">
                                 <span class="wrapper-subtitle">NEW One</span>
@@ -387,7 +387,7 @@
             <div class="arrival-section">
                 <div class="row g-5">
                     {% for product in recomendations  %}
-                    <div class="col-lg-4 col-sm-6">
+                    <div class="col-6 col-lg-4">
                         <div class="product-wrapper" data-aos="fade-up">
                             <div class="product-img">
                                 <img src="{{product.image_url}}"
@@ -442,7 +442,7 @@
             <div class="arrival-section">
                 <div class="row g-5">
                     {% for product in wishlist  %}
-                    <div class="col-lg-4 col-sm-6">
+                    <div class="col-lg-4 col-6">
                         <div class="product-wrapper" data-aos="fade-up">
                             <div class="product-img">
                                 <img src="{{product.image_url}}"
